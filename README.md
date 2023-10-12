@@ -36,5 +36,17 @@ Your submission will be evaluated based on the following criteria:
 
 * Ruby 3.2.1
 * Rails 7.0.8
-* Postgresql
+* Postgresql 9.3+
+
+## Planning
+
+This work will use the Open Weather API to look at the weather of major cities around the world. These could be defined by a user or have default locations. The defaults this will use are:
+
+* London
+* Paris
+* New York
+
+When a user clicks into a city they will be able to see the 16-day weather forecast and see some averaged data. They should also be presented with an option 
+to download the data in a CSV format.
+
 
