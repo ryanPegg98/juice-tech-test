@@ -67,6 +67,6 @@ class WeatherExportService
           [time_key, key].join(' - ')
         end
       end
-    end.flatten.uniq
+    end.flatten.uniq.sort
   end
 end

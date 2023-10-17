@@ -56,13 +56,13 @@ RSpec.describe WeatherExportService, type: :model do
 
     it 'builds the headers' do
       expect(subject.send(:build_headers)).to eq([
-                                                   '0000 - temp',
                                                    '0000 - feels_like',
                                                    '0000 - humidity',
+                                                   '0000 - temp',
                                                    '0000 - wind_speed',
-                                                   '2359 - temp',
                                                    '2359 - feels_like',
                                                    '2359 - humidity',
+                                                   '2359 - temp',
                                                    '2359 - wind_speed'
                                                  ])
     end
@@ -71,13 +71,13 @@ RSpec.describe WeatherExportService, type: :model do
       expect(subject.send(:headers)).to eq([
                                              'Date',
                                              'Location',
-                                             '0000 - temp',
                                              '0000 - feels_like',
                                              '0000 - humidity',
+                                             '0000 - temp',
                                              '0000 - wind_speed',
-                                             '2359 - temp',
                                              '2359 - feels_like',
                                              '2359 - humidity',
+                                             '2359 - temp',
                                              '2359 - wind_speed'
                                            ])
     end
@@ -112,17 +112,16 @@ RSpec.describe WeatherExportService, type: :model do
 
     it 'returns the data as a string for data_to_csv' do
       expect(subject.send(:data_to_csv)).to eq([
-        [Time.zone.today, name, 20.0, 19.0, 90, 10, 15.0, 14.0, 80, 5].join(','),
-        [Time.zone.today + 1.day, name, 21.0, 18.0, 80, 11, 13.0, 12.0, 85, 1].join(',')
+        [Time.zone.today, name, 19.0, 90, 20.0, 10, 14.0, 80, 15.0, 5].join(','),
+        [Time.zone.today + 1.day, name, 18.0, 80, 21.0, 11, 12.0, 85, 13.0, 1].join(',')
       ].join("\n"))
     end
 
     it 'returns the headers and data combined for export' do
       expect(subject.export).to eq([
-        ['Date', 'Location', '0000 - temp', '0000 - feels_like', '0000 - humidity', '0000 - wind_speed', '2359 - temp',
-         '2359 - feels_like', '2359 - humidity', '2359 - wind_speed'].join(','),
-        [Time.zone.today, name, 20.0, 19.0, 90, 10, 15.0, 14.0, 80, 5].join(','),
-        [Time.zone.today + 1.day, name, 21.0, 18.0, 80, 11, 13.0, 12.0, 85, 1].join(',')
+        ['Date','Location','0000 - feels_like','0000 - humidity','0000 - temp','0000 - wind_speed','2359 - feels_like','2359 - humidity','2359 - temp','2359 - wind_speed'].join(','),
+        [Time.zone.today, name, 19.0, 90, 20.0, 10, 14.0, 80, 15.0, 5].join(','),
+        [Time.zone.today + 1.day, name, 18.0, 80, 21.0, 11, 12.0, 85, 13.0, 1].join(',')
       ].join("\n"))
     end
   end
