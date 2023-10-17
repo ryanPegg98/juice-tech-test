@@ -11,6 +11,20 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <%= link_to "LOGO", "#" %>
+    </header>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Location Search", locations_path %></li>
+      </ul>
+    </nav>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <span>&copy; 2023</span>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,42 @@
+<article>
+  <div class="box">
+    <h1>Location Search</h1>
+
+    <%= form_with(model: @search, scope: 'search', local: false, url: locations_path, method: :get) do |f| %>
+      <div class="field">
+        <%= f.label :term %>
+        <%= f.text_field :term %>
+      </div>
+
+      <%= f.submit :search, class: 'button' %>
+    <% end %>
+  </div>
+
+  <% if @locations.any? %>
+    <div data-target="location_results">
+      <% @locations.each do |location| %>
+        <div class="box result-box">
+          <%= content_tag(:div, location.name, class: 'result-box__name') %>
+          <%= content_tag(:div, location.country, class: 'result-box__country') %>
+          <div class="result-box__actions">
+            <%= 
+              link_to(
+                'Show',
+                location_path(
+                  id: location.country,
+                  name: location.name,
+                  lat: location.lat,
+                  lng: location.lng
+                ),
+                class: 'button' 
+              ) %>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="box" data-target="message">
+      <p>No locations found.</p>
+    </div>
+  <% end %>
+</article>
