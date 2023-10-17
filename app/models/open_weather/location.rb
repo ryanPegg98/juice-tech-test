@@ -10,8 +10,5 @@ module OpenWeather
     attribute :name
     attribute :country
 
-    def persisted?
-      true
-    end
   end
 end
