@@ -222,7 +222,7 @@ RSpec.describe 'Locations' do
       end
     end
 
-    it 'should be able to see the forecasted weather of a selected location' do
+    it 'is able to see the forecasted weather of a selected location' do
       visit locations_path
 
       fill_in :search_term, with: 'London'
@@ -245,7 +245,7 @@ RSpec.describe 'Locations' do
       end
     end
 
-    it "should be able to click the export link" do
+    it 'is able to click the export link' do
       visit locations_path
 
       fill_in :search_term, with: 'London'

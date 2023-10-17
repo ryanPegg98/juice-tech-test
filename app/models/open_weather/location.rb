@@ -9,6 +9,5 @@ module OpenWeather
     attribute :lng
     attribute :name
     attribute :country
-
   end
 end

@@ -119,7 +119,8 @@ RSpec.describe WeatherExportService, type: :model do
 
     it 'returns the headers and data combined for export' do
       expect(subject.export).to eq([
-        ['Date','Location','0000 - feels_like','0000 - humidity','0000 - temp','0000 - wind_speed','2359 - feels_like','2359 - humidity','2359 - temp','2359 - wind_speed'].join(','),
+        ['Date', 'Location', '0000 - feels_like', '0000 - humidity', '0000 - temp', '0000 - wind_speed', '2359 - feels_like',
+         '2359 - humidity', '2359 - temp', '2359 - wind_speed'].join(','),
         [Time.zone.today, name, 19.0, 90, 20.0, 10, 14.0, 80, 15.0, 5].join(','),
         [Time.zone.today + 1.day, name, 18.0, 80, 21.0, 11, 12.0, 85, 13.0, 1].join(',')
       ].join("\n"))
