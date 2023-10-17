@@ -11,9 +11,9 @@ You are tasked with building a Ruby on Rails application that consumes data from
 * Create a new Ruby on Rails application from scratch (Rails version 6+).
 * Implement an API integration feature that consumes data from a publicly available API. You can choose any API of your preference (e.g., JSON placeholder, GitHub API, weather API). If you're stuck, you can use this: https://retool.com/utilities/generate-api-from-csv
 * Upon fetching the data from the API, you should process it with some business logic. The business logic should include at least one of the following:
-* Filtering and selecting specific data based on certain criteria.
-* Transforming the data in a meaningful way.
-* Calculating statistics or aggregations.
+  * Filtering and selecting specific data based on certain criteria.
+  * Transforming the data in a meaningful way.
+  * Calculating statistics or aggregations.
 * Implement a simple frontend view that allows users to export a subset of the processed data to a CSV file. Users should have the ability to select which data to export based on certain criteria (e.g., date range, specific category).
 
 ### Bonus (optional, if time permits):
@@ -38,15 +38,41 @@ Your submission will be evaluated based on the following criteria:
 * Rails 7.0.8
 * Postgresql 9.3+
 
-## Planning
+## Running Locally
 
-This work will use the Open Weather API to look at the weather of major cities around the world. These could be defined by a user or have default locations. The defaults this will use are:
+To get the application running you will need to clone the repo and then run the following commands in the terminal.
 
-* London
-* Paris
-* New York
+```bash
+bundle
+cp .env.example .env
+cp config/database.example.yml config/database.yml
+bin/rails db:create
+bin/rails db:schema:load
+bin/rails s
+```
 
-When a user clicks into a city they will be able to see the 16-day weather forecast and see some averaged data. They should also be presented with an option 
-to download the data in a CSV format.
+In the `.env` file you will need to add the `OPEN_WEATHER_KEY` to allow the application to run. This can be obtained from [Openweathmap.org](https://openweathermap.org/api)
+
+You will then be able to go to `localhost:3000` and that will allow you to search for a locations and see the weather forecast.
+
+## Recommened Improvements
+
+While building this application time was hard to come by. Due to this I was unable to take it as far as I would like. Below are some ideas I have that I would have implemented given more time.
+
+### Authentication
+
+The first one would allow users to sign up and sign in. This could have been used to allow users to store locations which would reduce the time it would take for a user to find a specific user. I would have gone one step further and allow the users to pin these to a dashboard to be able to see the current weather at a glance. The simplist way to do this would be to used Devise as the information not being critical then it does not need to be super secure authentication.
+
+### Utilise the Database
+
+While building out the Location service I thought that an additional step would allow the application to store the locations in the database which would make it easier to recall and pass data from the controller to the location service. This will reduce the location value being passed into the show method and the export method using the URL parameters which is not the best method.
+
+### Validation
+
+In order to improve the reliability I could have impelmented some validation which would prevent a service running when it does not have all of the required information. This was a weakness in this application and could be rectified with the models being used. Simple active record validations would have been an option or DRY validation.
+
+### Improved Testing
+
+On some of the specs, mainly the feature spec, I would add more scenarios for the different pages to ensure they would behave as a user would expect if an invalid response is recieved. Additionally, I would include cucumber tests as I think they offer more to other developers who can use them as another set of documentation.
 
 
