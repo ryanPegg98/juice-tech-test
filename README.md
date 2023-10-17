@@ -55,6 +55,8 @@ In the `.env` file you will need to add the `OPEN_WEATHER_KEY` to allow the appl
 
 You will then be able to go to `localhost:3000` and that will allow you to search for a locations and see the weather forecast.
 
+To run the tests you will need to run `bundle exec rspec` which will run all of the automated tests.
+
 ## Recommened Improvements
 
 While building this application time was hard to come by. Due to this I was unable to take it as far as I would like. Below are some ideas I have that I would have implemented given more time.
