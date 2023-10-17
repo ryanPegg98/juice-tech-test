@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  user: postgres
+  password: 
+
+development:
+  <<: *default
+  database: juice_tech_test_development
+
+test:
+  <<: *default
+  database: juice_tech_test_test
+
+production:
+  <<: *default
+  database: juice_tech_test_production
+  username: juice_tech_test
+  password: <%= ENV["JUICE_TECH_TEST_DATABASE_PASSWORD"] %>

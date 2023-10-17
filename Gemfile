@@ -7,8 +7,10 @@ ruby '3.2.1'
 
 gem 'bootsnap', require: false
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
+gem 'faraday', '~> 2.7', '>= 2.7.11'
 gem 'importmap-rails'
 gem 'jbuilder'
+gem 'oj', '~> 3.16', '>= 3.16.1'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 7.0.8'
@@ -24,6 +26,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'capybara', '~> 3.39', '>= 3.39.2'
   gem 'database_cleaner', '~> 2.0', '>= 2.0.2'
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
@@ -33,6 +36,7 @@ group :development, :test do
   gem 'rubocop-rails', '~> 2.21', '>= 2.21.2', require: false
   gem 'rubocop-rspec', '~> 2.24', '>= 2.24.1', require: false
   gem 'shoulda-matchers', '~> 5.3'
+  gem 'webdriver', '~> 0.19.0'
 end
 
 group :development do
@@ -40,4 +44,8 @@ group :development do
 
   # gem "rack-mini-profiler"
   # gem "spring"
+end
+
+group :test do
+  gem 'webmock', '~> 3.19', '>= 3.19.1'
 end
