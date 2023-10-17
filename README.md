@@ -1,6 +1,6 @@
 # Juice Tech Test
 
-## Breif
+## Brief
 
 ### Project Description:
 
@@ -51,19 +51,19 @@ bin/rails db:schema:load
 bin/rails s
 ```
 
-In the `.env` file you will need to add the `OPEN_WEATHER_KEY` to allow the application to run. This can be obtained from [Openweathmap.org](https://openweathermap.org/api)
+In the `.env` file, you will need to add the OPEN_WEATHER_KEY to allow the application to run. This can be obtained from [Openweathmap.org](https://openweathermap.org/api)
 
-You will then be able to go to `localhost:3000` and that will allow you to search for a locations and see the weather forecast.
+You will then be able to go to `localhost:3000` which will allow you to search for a location and see the weather forecast.
 
 To run the tests you will need to run `bundle exec rspec` which will run all of the automated tests.
 
-## Recommened Improvements
+## Recommended Improvements
 
-While building this application time was hard to come by. Due to this I was unable to take it as far as I would like. Below are some ideas I have that I would have implemented given more time.
+While building this application time was hard to come by. Due to this, I was unable to take it as far as I would like. Below are some ideas I have that I would have implemented given more time.
 
 ### Authentication
 
-The first one would allow users to sign up and sign in. This could have been used to allow users to store locations which would reduce the time it would take for a user to find a specific user. I would have gone one step further and allow the users to pin these to a dashboard to be able to see the current weather at a glance. The simplist way to do this would be to used Devise as the information not being critical then it does not need to be super secure authentication.
+The first one would allow users to sign up and sign in. This could have been used to allow users to store locations which would reduce the time it would take for a user to find a specific user. I would have gone one step further and allowed the users to pin these to a dashboard to be able to see the current weather at a glance. The simplest way to do this would be to use Devise as the information not being critical then it does not need to be super secure authentication.
 
 ### Utilise the Database
 
@@ -71,10 +71,9 @@ While building out the Location service I thought that an additional step would 
 
 ### Validation
 
-In order to improve the reliability I could have impelmented some validation which would prevent a service running when it does not have all of the required information. This was a weakness in this application and could be rectified with the models being used. Simple active record validations would have been an option or DRY validation.
+To improve the reliability I could have implemented some validation which would prevent a service from running when it does not have all of the required information. This was a weakness in this application and could be rectified with the models being used. Simple active record validations would have been an option with DRY validation being an alternative.
 
 ### Improved Testing
 
-On some of the specs, mainly the feature spec, I would add more scenarios for the different pages to ensure they would behave as a user would expect if an invalid response is recieved. Additionally, I would include cucumber tests as I think they offer more to other developers who can use them as another set of documentation.
-
+On some of the specs, mainly the feature spec, I would add more scenarios for the different pages to ensure they would behave as a user would expect if an invalid response is received. Additionally, I would include cucumber tests as I think they offer more to other developers who can use them as another set of documentation.
 
