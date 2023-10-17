@@ -1,0 +1,10 @@
+.forecast_breakdown {
+  @include tablet-device {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @include desktop-device {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}

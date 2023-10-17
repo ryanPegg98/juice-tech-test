@@ -1,14 +1,14 @@
 <article>
-  <div class="header">
-    <%= link_to "<", locations_path %>
-    <%= content_tag(:h1, @location.name) %>
+  <div class="header--split">
+    <%= link_to "<", locations_path, class: 'header--split__back' %>
+    <%= content_tag(:h1, @location.name, class: 'header--split__title') %>
   </div>
 
-  <div class="box" data-target="current_weather">
+  <div class="box box--small" data-target="current_weather">
     <h2>Current</h2>
 
-    <p data-target="current_temp"class="highlight"><%= @current_weather.temp %>&deg;C</p>
-    <p data-target="current_description"><%= @current_weather.weather_text %></p>
+    <p data-target="current_temp" class="highlight"><%= @current_weather.temp %>&deg;C</p>
+    <p data-target="current_description" class="subheading"><%= @current_weather.weather_text %></p>
 
     <ul>
       <li><b>Feels Like:</b> <%= @current_weather.feels_like %>&deg;C</li>
@@ -18,59 +18,65 @@
   </div>
 
   <div data-target="forecast">
-    <h2>Forecast</h2>
-
-    <%=
-      link_to(
-          "Export (CSV)",
-          location_export_path(
-            location_id: params[:id],
-            lat: params[:lat],
-            lng: params[:lng],
-            name: params[:name]
-          ),
-          download: true,
-          class: 'button'
-      ) 
-    %>
+    <div class="header--action">
+      <h2 class="header--action__title">Forecast</h2>
+      <div class="header--action__buttons">
+        <%=
+          link_to(
+              "Export (CSV)",
+              location_export_path(
+                location_id: params[:id],
+                lat: params[:lat],
+                lng: params[:lng],
+                name: params[:name]
+              ),
+              download: true,
+              class: 'button'
+          ) 
+        %>
+      </div>
+    </div>
 
     <% if @forecasts.any? %>
       <% @forecasts.each do |day| %>
         <div class="box" data-target="forecast_<%= day.key %>">
           <h3><%= day.date_text %></h3>
-          <div class="">
+          <div class="key-details">
             <div>
-              <p><%= day.average_temp %>&deg;C</p>
+              <p class="highlight highlight--small"><%= day.average_temp.round(2) %>&deg;C</p>
               <p>Average Temp</p>
             </div>
 
             <div>
-              <p><%= day.average_feels_like %>&deg;C</p>
+              <p class="highlight highlight--small"><%= day.average_feels_like.round(2) %>&deg;C</p>
               <p>Average Feels Like</p>
             </div>
 
             <div>
-              <p><%= day.average_humidity %>%</p>
+              <p class="highlight highlight--small"><%= day.average_humidity.round(2) %>%</p>
               <p>Average Humidity</p>
             </div>
 
             <div>
-              <p><%= day.average_wind_speed %> KPH</p>
+              <p class="highlight highlight--small"><%= day.average_wind_speed.round(2) %> KPH</p>
               <p>Average Wind Speed</p>
             </div>
           </div>
-          <% day.forecasts.each do |forecast|%>
-            <div data-target="forecast_hour_<%= forecast.date_time.to_i %>">
-              <h4><%= forecast.date_time.strftime("%H:%M") %></h4>
-              <ul>
-                <li><b>Temp:</b> <%= forecast.temp %>&deg;C</li>
-                <li><b>Weather:</b> <%= forecast.weather_text %></li>
-                <li><b>Feels Like:</b> <%= forecast.feels_like %>&deg;C</li>
-                <li><b>Humidity:</b> <%= forecast.humidity %>%</li>
-                <li><b>Wind Speed:</b> <%= forecast.wind_speed %>KPH</li>
-              </ul>
-            </div>
-          <% end %>
+
+          <div class="forecast_breakdown">
+            <% day.forecasts.each do |forecast|%>
+              <div data-target="forecast_hour_<%= forecast.date_time.to_i %>">
+                <h4><%= forecast.date_time.strftime("%H:%M") %></h4>
+                <ul>
+                  <li><b>Temp:</b> <%= forecast.temp %>&deg;C</li>
+                  <li><b>Weather:</b> <%= forecast.weather_text %></li>
+                  <li><b>Feels Like:</b> <%= forecast.feels_like %>&deg;C</li>
+                  <li><b>Humidity:</b> <%= forecast.humidity %>%</li>
+                  <li><b>Wind Speed:</b> <%= forecast.wind_speed %>KPH</li>
+                </ul>
+              </div>
+            <% end %>
+          </div>
         </div>
       <% end %>
     <% else %>

@@ -11,15 +11,15 @@
   </head>
 
   <body>
-    <header>
-      <%= link_to "LOGO", "#" %>
+    <header class="header">
+      <nav class="nav">
+        <ul>
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Location Search", locations_path %></li>
+        </ul>
+      </nav>
     </header>
-    <nav>
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-        <li><%= link_to "Location Search", locations_path %></li>
-      </ul>
-    </nav>
+    
     <main>
       <%= yield %>
     </main>

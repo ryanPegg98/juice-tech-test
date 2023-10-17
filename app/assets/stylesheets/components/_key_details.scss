@@ -1,0 +1,18 @@
+.key-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+
+  div {
+    text-align: center;
+    @include flex-center;
+    flex-direction: column;
+    background-color: $light_grey;
+    padding: 0.5rem 0;
+
+    p {
+      margin: 0.25rem;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+.result-box {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+
+  &__name {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  &__country {
+    grid-column: 1;
+    grid-row: 2;
+    font-size: 0.7rem;
+  }
+
+  &__actions {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    @include flex-center;
+  }
+}

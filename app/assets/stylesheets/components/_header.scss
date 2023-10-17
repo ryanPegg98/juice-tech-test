@@ -1,0 +1,79 @@
+.header {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 1rem;
+  background-color: $dark_grey;
+
+  &--split {
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
+    grid-template-rows: 3rem;
+    margin-bottom: 1.5rem;
+
+    &__back {
+      grid-column: 1;
+      grid-row: 1;
+      color: $dark_grey;
+      text-decoration: none;
+      @include flex-center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      transition: 0.5s;
+
+      &:hover {
+        font-size: 1.75rem;
+        transition: 0.5s;
+      }
+    }
+
+    &__title {
+      grid-column: 2;
+      grid-row: 1;
+      margin: 0;
+      @include flex-center;
+
+      @include tablet-device {
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  &--action {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 1.5rem;
+
+    &__title {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    &__buttons {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    @include tablet-device {
+      grid-template-columns: 1fr auto;
+
+      &__title {
+        grid-column: 1;
+        grid-row: 1;
+        @include flex-start;
+
+        h2 {
+          margin: 0;
+          padding: 0;
+        }
+      }
+  
+      &__buttons {
+        grid-column: 2;
+        grid-row: 1;
+        @include flex-end;
+      }
+    }
+  }
+}

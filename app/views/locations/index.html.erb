@@ -1,5 +1,5 @@
 <article>
-  <div class="box">
+  <div class="box box--small">
     <h1>Location Search</h1>
 
     <%= form_with(model: @search, scope: 'search', local: false, url: locations_path, method: :get) do |f| %>
@@ -15,7 +15,7 @@
   <% if @locations.any? %>
     <div data-target="location_results">
       <% @locations.each do |location| %>
-        <div class="box result-box">
+        <div class="box box--small result-box">
           <%= content_tag(:div, location.name, class: 'result-box__name') %>
           <%= content_tag(:div, location.country, class: 'result-box__country') %>
           <div class="result-box__actions">
@@ -35,7 +35,7 @@
       <% end %>
     </div>
   <% else %>
-    <div class="box" data-target="message">
+    <div class="box box--small" data-target="message">
       <p>No locations found.</p>
     </div>
   <% end %>
